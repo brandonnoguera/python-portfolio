@@ -1,0 +1,187 @@
+⚔️ BATTLE TIME ⚔️
+
+Name your Legend:
+Arthur the Magnificent
+Character Type (Human, Elf, Wizard, Orc): 
+Elf
+
+Arthur the Magnificent
+HEALTH: 13
+STRENGTH: 18
+
+Who are they battling?
+
+Name your Legend:
+Sheila the Almighty
+Character Type (Human, Elf, Wizard, Orc): 
+Human
+
+Sheila the Almighty
+HEALTH: 40
+STRENGTH: 26
+
+*clear screen here*
+
+⚔️ BATTLE TIME ⚔️
+
+The battle begins!
+
+Arthur wins the first blow
+Sheila takes a hit, with 8 damage
+
+Arthur the Magnificent
+HEALTH: 13
+
+Sheila the Almighty
+HEALTH: 32
+
+And they're both standing for the next round!
+
+*clear screen here*
+
+⚔️ BATTLE TIME ⚔️
+
+The battle continues!
+
+Sheila wins round 2
+Arthur takes a hit, with 8 damage
+
+Arthur the Magnificent
+HEALTH: 5
+
+Sheila the Almighty
+HEALTH: 32
+
+And they're both standing for the next round!
+
+*clear screen here*
+
+⚔️ BATTLE TIME ⚔️
+
+The battle continues!
+
+Sheila wins round 3
+Arthur takes a hit, with 8 damage
+
+Arthur the Magnificent
+HEALTH: -3
+
+Sheila the Almighty
+HEALTH: 32
+
+Oh no Arthur the Mighty has died!
+
+Sheila the Almighty destroyed Arthur the Magnificent in 3 rounds!
+"""
+
+import os, time, random
+
+def rolldice(side):
+  result=random.randint(1,side)
+  return result
+  
+def health():
+  healthstat= ((rolldice(6)*rolldice(12))/2)+10
+  return healthstat
+
+def strength():
+  strengthstat= ((rolldice(6)*rolldice(8))/2)+12
+  return strengthstat
+
+print("Time To Battle")
+print()
+name1=input("Name your character:\n")
+character1=input("Character Type (Human, Elf, Wizard, Orc): \n")
+print()
+print(name1)
+health1=health()
+strength1=strength()
+print(f"Health: {health()}")
+print(f"Strength: {strength()}")
+print()
+print("Time for the opponent...")
+print()
+
+name2=input("Name your character:\n")
+character2=input("Character Type (Human, Elf, Wizard, Orc): \n")
+print()
+print(name2)
+health2=health()
+strength2=strength()
+print(f"Health: {health()}")
+print(f"Strength: {strength()}")
+print()
+
+round=1
+Winner=None
+
+while True:
+  time.sleep(1)
+  os.system("clear")
+  print("Time To Battle")
+
+  dice1=rolldice(6)
+  dice2=rolldice(6)
+  
+  difference=abs(strength1-strength2) +1
+
+  if dice1>dice2:
+    health2 -= difference
+    if round==1:
+      print(f"{name1} wins round 1")
+    else:
+      print(f"{name2} wins round {round}")
+  elif dice2>dice1:
+    health1 -= difference
+    if round==1:
+      print(f"{name2} wins round 1")
+    else:
+      print(f"{name2} wins round {round}")
+  else:
+    print("Draw!")
+
+  print()
+  print(name1)
+  print(f"Health: {health1}")
+  print()
+  print(name2)
+  print(f"Health {health2}")
+  print()
+
+  if health1<=0:
+    print(f"{name1} is DEAD")
+    winner = name2
+    break
+  elif health2<-0:
+    print(f"{name2} is DEAD")
+    winner = name1
+    break
+  else:
+    print("Both Have survived this round...")
+    round += 1
+
+time.sleep(1)
+os.system("clear")
+print("Time To Battle")
+print()
+print(f"{winner} has won in {round} rounds")
+
+"""
+while True:
+  print("Character Builder")
+  print()
+  name1=input("Name your character:\n")
+  character1=input("Character Type (Human, Elf, Wizard, Orc): \n")
+  print()
+  strength1=strength()
+  print(f"Health: {health()}")
+  print(f"Strength: {strength()}")
+  print()
+  print("May your name go down in Legend")
+  print()
+  again = input("Repeat?:\n")
+  if again=='no':
+    break
+  time.sleep(1)
+  os.system("clear")
+"""
