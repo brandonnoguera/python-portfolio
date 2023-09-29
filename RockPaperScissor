@@ -1,0 +1,59 @@
+from getpass import getpass
+
+print("ROCK PAPER SCISSOR SHOOT")
+print()
+print("Select 'R' for rock, 'P' for paper, or 'S' for scissors")
+print()
+
+player1_score = 0
+player2_score = 0
+
+while True:
+    player1 = input("Player 1 - ")
+    print()
+    player2 = input("Player 2 - ")
+    print()
+
+    if player1 == 'R':
+        if player2 == 'R':
+            print("Draw")
+        elif player2 == 'P':
+            print("Player 2 wins")
+            player2_score += 1
+        elif player2 == 'S':
+            print("Player 1 wins")
+            player1_score += 1
+        else:
+            print("Player 2's move is not recognized")
+
+    elif player1 == 'P':
+        if player2 == 'P':
+            print("Draw")
+        elif player2 == 'R':
+            print("Player 1 wins")
+            player1_score += 1
+        elif player2 == 'S':
+            print("Player 2 wins")
+            player2_score += 1
+        else:
+            print("Player 2's move is not recognized")
+
+    elif player1 == 'S':
+        if player2 == 'S':
+            print("Draw")
+        elif player2 == 'R':
+            print("Player 2 wins")
+            player2_score += 1
+        elif player2 == 'P':
+            print("Player 1 wins")
+            player1_score += 1
+        else:
+            print("Player 2's move is not recognized")
+
+    print(f"Player 1 has {player1_score} wins.")
+    print(f"Player 2 has {player2_score} wins.")
+    print()
+
+    if player1_score == 3 or player2_score == 3:
+        print("Thanks for playing!")
+        exit()
